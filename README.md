@@ -1,6 +1,6 @@
 # C++ Basic Projects
 
-A collection of basic C++ projects to help beginners understand and implement fundamental programming concepts.
+Here is the collection of basic C++ projects to help beginners understand and implement fundamental programming concepts.
 
 ## Contents
 
@@ -46,7 +46,12 @@ A collection of basic C++ projects to help beginners understand and implement fu
 
 ## Introduction to C++
 
-C++ is a high-level programming language developed by Bjarne Stroustrup as an extension of the C programming language. It is widely used for competitive programming, game development, system/software development, and more.
+<ul>
+  <li>C++ is a high-level programming language developed by Bjarne Stroustrup as an extension of the C programming language. </li>
+  <li>It is widely used for competitive programming, game development, system/software development, and more.</li>
+  <li>The language was updated 4 major times in 2011, 2014, 2017, and 2020 to C++11, C++14, C++17, C++20.</li>
+</ul>
+
 
 ### Applications of C++
 - **Game Development:** C++ is widely used in developing game engines due to its high performance.
@@ -56,7 +61,7 @@ C++ is a high-level programming language developed by Bjarne Stroustrup as an ex
 
 ## About Me
 
-A passionate Computer Science student with an interest in software development, open-source projects, and learning new technologies.
+I am a Computer Science student with an interest in software development, open-source projects, and learning new technologies.
 
 ### Contact Me
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yourusername)
