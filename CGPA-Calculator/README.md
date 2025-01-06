@@ -72,8 +72,16 @@ The main function is responsible for the following:
 5. **Display Courses**: The program displays a list of all the courses, showing their names, total marks, and obtained marks.
 6. **Calculate and Display GPA and CGPA**: The program calculates the GPA for the current semester and the cumulative CGPA, displaying them in the format with 2 decimal places.
 
-## How to Use
+## Sample Output
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yourusername/CGPA-Calculator.git
+
+## About Me
+
+A passionate Computer Science student with an interest in software development, open-source projects, and learning new technologies.
+
+### Contact Me
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yourusername)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your-email@example.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yourprofile)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/yourphonenumber)
+
