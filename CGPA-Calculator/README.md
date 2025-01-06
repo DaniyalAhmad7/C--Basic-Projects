@@ -72,10 +72,12 @@ The main function is responsible for the following:
 
 ## Sample Output
 
+![sampleCGPA_Calculator](https://github.com/user-attachments/assets/250c0394-2323-4083-9234-34c5e7df8767)
 
 ## About Me
 
 A passionate Computer Science student with an interest in software development, open-source projects, and learning new technologies.
+
 
 ### Contact Me
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yourusername)
