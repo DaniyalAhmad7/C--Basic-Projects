@@ -11,12 +11,11 @@ private:
     int obtainedMarks;
 
 public:
-    // Constructor
     Course(string name, int total, int obtained)
         : courseName(name), totalMarks(total), obtainedMarks(obtained) {}
 
     // Getters
-    int getCredits() const { return totalMarks / 10; } // Assume 10 marks = 1 credit
+    int getCredits() const { return totalMarks / 10; }
     double getGradePoints() const { return (obtainedMarks / (double)totalMarks) * getCredits() * 4.0; }
     string getCourseName() const { return courseName; }
     int getTotalMarks() const { return totalMarks; }
@@ -28,11 +27,10 @@ class Student {
 private:
     vector<Course> courses; // List of courses for the current semester
     double previousCGPA;
-    int previousCredits;
 
 public:
-    // Constructor to initialize previous CGPA and credits
-    Student(double cgpa, int credits) : previousCGPA(cgpa), previousCredits(credits) {}
+    // Constructor to initialize previous CGPA
+    Student(double cgpa) : previousCGPA(cgpa) {}
 
     // Add a course to the student's record
     void addCourse(const Course &course) {
@@ -55,14 +53,7 @@ public:
     // Calculate new CGPA
     double calculateCGPA() {
         double currentGPA = calculateGPA();
-        int currentCredits = 0;
-        for (const auto &course : courses) {
-            currentCredits += course.getCredits();
-        }
-        double totalGradePoints = (previousCGPA * previousCredits) + (currentGPA * currentCredits);
-        int totalCredits = previousCredits + currentCredits;
-
-        return (totalCredits > 0) ? (totalGradePoints / totalCredits) : 0.0;
+        return (previousCGPA + currentGPA) / 2.0; // Simplified CGPA calculation
     }
 
     // Display details of all courses
@@ -77,18 +68,25 @@ public:
 
 int main() {
     double previousCGPA;
-    int previousCredits;
 
     cout << "Enter your previous CGPA: ";
     cin >> previousCGPA;
-    cout << "Enter your total credits from previous semesters: ";
-    cin >> previousCredits;
 
-    Student student(previousCGPA, previousCredits);
+    if (previousCGPA < 0.0 || previousCGPA > 4.0) {
+        cout << "Error: CGPA must be between 0.0 and 4.0.\n";
+        return 1;
+    }
+
+    Student student(previousCGPA);
     int numCourses;
 
     cout << "Enter the number of courses: ";
     cin >> numCourses;
+
+    if (numCourses <= 0 || numCourses > 10) {
+        cout << "Error: Invalid number of courses\n";
+        return 1;
+    }
 
     for (int i = 0; i < numCourses; ++i) {
         string courseName;
@@ -99,10 +97,20 @@ int main() {
         cout << "Course Name: ";
         cin.ignore(); // To handle newline from previous input
         getline(cin, courseName);
+
         cout << "Total Marks: ";
         cin >> totalMarks;
+        if (totalMarks <= 0 || totalMarks >= 300) {
+            cout << "Error: Invalid number of marks\n";
+            return 1;
+        }
+
         cout << "Obtained Marks: ";
         cin >> obtainedMarks;
+        if (obtainedMarks < 0 || obtainedMarks > totalMarks) {
+            cout << "Error: Invalid obtained marks.\n";
+            return 1;
+        }
 
         // Add course to student's record
         student.addCourse(Course(courseName, totalMarks, obtainedMarks));
