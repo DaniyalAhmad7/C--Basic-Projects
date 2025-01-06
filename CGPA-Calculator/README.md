@@ -49,15 +49,13 @@ The `Student` class contains the following methods:
 - **addCourse()**: Adds a course to the student's list of courses.
 - **calculateGPA()**: Calculates the GPA for the current semester based on the grade points and credits of all the courses taken. It uses the formula:
   
-  \[
-  GPA = \frac{\text{Total Grade Points}}{\text{Total Credits}}
-  \]
+
+  GPA = `Total Grade Points\Total Credits`
   
 - **calculateCGPA()**: Calculates the cumulative CGPA by averaging the previous CGPA and the current GPA:
   
-  \[
-  CGPA = \frac{\text{Previous CGPA} + \text{Current GPA}}{2}
-  \]
+ 
+  CGPA = `Previous CGPA\Current GPA`
 
 - **displayCourses()**: Displays the details of all the courses, including course name, total marks, and obtained marks.
 
