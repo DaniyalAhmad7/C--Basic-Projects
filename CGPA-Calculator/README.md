@@ -1,69 +1,79 @@
 # CGPA Calculator
 
-This C++ program calculates the GPA for the current semester and the cumulative CGPA for a student based on the input of multiple courses. It uses classes to encapsulate the data and functionality.
-
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Code Explanation](#code-explanation)
-   - [Course Class](#course-class)
-   - [Student Class](#student-class)
-   - [Main Function](#main-function)
-4. [How to Run](#how-to-run)
-5. [Screenshots](#screenshots)
-6. [Conclusion](#conclusion)
-
-## Introduction
-
-The CGPA Calculator is designed to help students calculate their GPA for a given semester and their cumulative CGPA based on the grades and credits of each course they have taken.
+This is a simple C++ program that calculates a student's CGPA (Cumulative Grade Point Average) based on the courses taken in the current semester and the previous CGPA. It allows the user to input course details, such as course name, total marks, and obtained marks, and calculates both the GPA for the current semester and the overall CGPA.
 
 ## Features
 
-- Allows the input of multiple courses with their respective credits and grade points.
-- Calculates the GPA for the current semester.
-- Calculates the cumulative CGPA across all semesters.
-- Displays a summary of all entered courses.
+- Allows the user to enter previous CGPA and details for each course in the current semester.
+- Calculates the GPA for the current semester and the cumulative CGPA.
+- Displays a detailed list of courses with total and obtained marks.
+
+## Table of Contents
+
+1. [Code Explanation](#code-explanation)
+    - [Course Class](#course-class)
+    - [Student Class](#student-class)
+    - [Main Function](#main-function)
+2. [How to Use](#how-to-use)
+3. [Sample Output](#sample-output)
 
 ## Code Explanation
 
 ### Course Class
 
 The `Course` class represents a single course with the following attributes:
-- `courseName`: The name of the course.
-- `credits`: The number of credits for the course.
-- `gradePoints`: The grade points earned in the course.
 
-**Methods:**
-- Constructor to initialize the course attributes.
-- Getters to retrieve course details.
+- **courseName**: The name of the course.
+- **totalMarks**: The total marks for the course.
+- **obtainedMarks**: The marks obtained by the student.
+
+The `Course` class contains the following methods:
+
+- **Constructor**: Initializes the course name, total marks, and obtained marks.
+- **getCredits()**: Returns the number of credits for the course. It's calculated as `totalMarks / 10`.
+- **getGradePoints()**: Calculates the grade points based on the obtained marks and credits. The formula is `(obtainedMarks / totalMarks) * getCredits() * 4.0`.
+- **getCourseName()**: Returns the course name.
+- **getTotalMarks()**: Returns the total marks of the course.
+- **getObtainedMarks()**: Returns the obtained marks for the course.
 
 ### Student Class
 
-The `Student` class manages a list of `Course` objects and tracks cumulative grade points and credits.
+The `Student` class represents a student with the following attributes:
 
-**Attributes:**
-- `courses`: A vector to store multiple courses.
-- `cumulativeGradePoints`: Total grade points across all semesters.
-- `cumulativeCredits`: Total credits across all semesters.
+- **courses**: A vector of `Course` objects representing the courses taken by the student.
+- **previousCGPA**: The student's previous CGPA.
 
-**Methods:**
-- `addCourse()`: Adds a course to the student's record.
-- `calculateGPA()`: Calculates GPA for the current semester.
-- `calculateCGPA()`: Calculates cumulative CGPA.
-- `displayCourses()`: Displays details of all courses.
+The `Student` class contains the following methods:
+
+- **Constructor**: Initializes the student's previous CGPA.
+- **addCourse()**: Adds a course to the student's list of courses.
+- **calculateGPA()**: Calculates the GPA for the current semester based on the grade points and credits of all the courses taken. It uses the formula:
+  
+  \[
+  GPA = \frac{\text{Total Grade Points}}{\text{Total Credits}}
+  \]
+  
+- **calculateCGPA()**: Calculates the cumulative CGPA by averaging the previous CGPA and the current GPA:
+  
+  \[
+  CGPA = \frac{\text{Previous CGPA} + \text{Current GPA}}{2}
+  \]
+
+- **displayCourses()**: Displays the details of all the courses, including course name, total marks, and obtained marks.
 
 ### Main Function
 
-The `main()` function orchestrates the program's execution:
-1. Prompts the user to enter the number of courses.
-2. Loops to collect course details and adds each course to the student record.
-3. Displays all entered courses.
-4. Calculates and displays the GPA and CGPA.
+The main function is responsible for the following:
 
-## How to Run
+1. **Input Previous CGPA**: The program first prompts the user to enter their previous CGPA. It checks that the CGPA is between 0.0 and 4.0.
+2. **Input Number of Courses**: The program prompts the user to enter the number of courses taken in the current semester. The user can enter a number between 1 and 10.
+3. **Input Course Details**: For each course, the user is asked to input the course name, total marks, and obtained marks. The program ensures that the obtained marks are valid (i.e., between 0 and the total marks).
+4. **Add Courses to Student**: After the user inputs the course details, each course is added to the student's record.
+5. **Display Courses**: The program displays a list of all the courses, showing their names, total marks, and obtained marks.
+6. **Calculate and Display GPA and CGPA**: The program calculates the GPA for the current semester and the cumulative CGPA, displaying them in the format with 2 decimal places.
+
+## How to Use
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/C++-Basic-Projects.git
-
+   git clone https://github.com/yourusername/CGPA-Calculator.git
