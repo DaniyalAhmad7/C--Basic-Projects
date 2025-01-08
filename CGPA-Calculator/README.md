@@ -9,13 +9,28 @@ This is a simple C++ program that calculates a student's CGPA (Cumulative Grade 
 - Displays a detailed list of courses with total and obtained marks.
 
 ## Table of Contents
-
-1. [Code Explanation](#code-explanation)
+1. [Formulae](#formulae)
+2. [Code Explanation](#code-explanation)
     - [Course Class](#course-class)
     - [Student Class](#student-class)
     - [Main Function](#main-function)
-2. [How to Use](#how-to-use)
 3. [Sample Output](#sample-output)
+4. [About Me](#about-me)
+
+## Formulae
+
+The **GPA (Grade Point Average)** is calculated using the formula:
+
+![gpa](https://github.com/user-attachments/assets/4f13c2c6-e64d-4fd9-917c-039483df070b)
+
+Where **Grade Points** for a course are calculated as:
+
+![gradePoints](https://github.com/user-attachments/assets/6e379a86-3309-44ee-a01f-106143d2ed75)
+
+**Course Credits** represent the weight or importance of the course, often derived from the total marks.
+
+![Credits](https://github.com/user-attachments/assets/2f5d77c7-607d-4004-8044-29ad485a668c)
+
 
 ## Code Explanation
 
@@ -30,8 +45,8 @@ The `Course` class represents a single course with the following attributes:
 The `Course` class contains the following methods:
 
 - **Constructor**: Initializes the course name, total marks, and obtained marks.
-- **getCredits()**: Returns the number of credits for the course. It's calculated as `totalMarks / 10`.
-- **getGradePoints()**: Calculates the grade points based on the obtained marks and credits. The formula is `(obtainedMarks / totalMarks) * getCredits() * 4.0`.
+- **getCredits()**: Returns the number of credits for the course. 
+- **getGradePoints()**: Calculates the grade points based on the obtained marks and credits. 
 - **getCourseName()**: Returns the course name.
 - **getTotalMarks()**: Returns the total marks of the course.
 - **getObtainedMarks()**: Returns the obtained marks for the course.
@@ -55,7 +70,7 @@ The `Student` class contains the following methods:
 - **calculateCGPA()**: Calculates the cumulative CGPA by averaging the previous CGPA and the current GPA:
   
  
-  CGPA = `Previous CGPA\Current GPA`
+  CGPA = `(Previous CGPA +Current GPA) / 2.0`
 
 - **displayCourses()**: Displays the details of all the courses, including course name, total marks, and obtained marks.
 
