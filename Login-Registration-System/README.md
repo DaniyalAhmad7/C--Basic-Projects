@@ -1,6 +1,6 @@
 # Signup and Registration System
 
-This C++ program implements a simple Signup and Registration system. It allows users to sign up with personal details, log in with a username and password, and displays all registered users' information (for admin purposes). The user data is stored in a text file (`users.txt`) in CSV format.
+This C++ program implements a simple Signup and Registration system. It allows users to sign up with personal details, log in with a username and password, and displays all registered users information. The user data is stored in a text file (`users.txt`).
 
 **Note**: Before running the program, ensure that a `users.txt` file exists in the same directory. This file will be used to store and retrieve user data during signup and login.
 
@@ -82,6 +82,8 @@ The main function serves as the entry point for the program. It presents a menu 
 The program runs in a loop until the user selects the exit option.
 
 ## Sample Output
+
+![loginDemo](https://github.com/user-attachments/assets/aca8d4cb-f6eb-43b9-8a5a-d42f6801e7df)
 
 
 ## About Me
