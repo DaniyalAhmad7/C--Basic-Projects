@@ -1,159 +1,70 @@
 # Tic Tac Toe Game
 
-## Description
-This project is a console-based implementation of the classic Tic Tac Toe game for two players. The game is played on a 3x3 grid, and players take turns marking a cell with their respective symbols (X or O). The player who first gets three of their symbols in a row, column, or diagonal wins the game. If all cells are filled without a winner, the game ends in a draw.
+This is a simple C++ implementation of the classic Tic Tac Toe game. The game allows two players to play against each other on a 3x3 grid, aiming to be the first to align three of their marks in a row, column, or diagonal.
+
+## Features
+
+- Two-player game mode.
+- Dynamic board display after each move.
+- Input validation to ensure valid moves.
+- Detection of win, draw, or invalid moves.
+- Allows players to restart or exit after a game ends.
+
+## Table of Contents
+1. [Game Logic](#game-logic)
+2. [Code Explanation](#code-explanation)
+    - [TicTacToe Class](#tictactoe-class)
+    - [Main Function](#main-function)
+3. [Sample Output](#sample-output)
+4. [About Me](#about-me)
+
+## Game Logic
+
+Tic Tac Toe is played on a 3x3 grid. Players take turns marking a spot on the grid with their respective symbols ('X' or 'O'). The game ends when:
+
+- A player successfully marks three spots in a row, column, or diagonal.
+- All spots are filled without any player achieving the above condition, resulting in a draw.
 
 ## Code Explanation
 
-### 1. **Class Definition**
-The `TicTacToe` class encapsulates the game logic and board management. It uses a 2D array to represent the board and maintains the current player's turn.
+### TicTacToe Class
 
-```cpp
-class TicTacToe {
-private:
-    char board[3][3];  // 2D array to represent the 3x3 board
-    char currentPlayer;
-public:
-    TicTacToe();
-    void displayBoard();
-    bool checkWin();
-    bool checkDraw();
-    void switchPlayer();
-    bool takeInput();
-    void playGame();
-};
-```
+The `TicTacToe` class encapsulates the game logic and handles the game board, player turns, and checking win/draw conditions.
 
-### 2. **Initialization**
-The constructor initializes the board with empty spaces and sets the current player to 'X'.
+#### Attributes:
+- `board[3][3]`: A 3x3 array representing the game board.
+- `currentPlayer`: Character representing the current player ('X' or 'O').
 
-```cpp
-TicTacToe::TicTacToe() : currentPlayer('X') {
-    for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j)
-            board[i][j] = ' ';
-}
-```
+#### Methods:
 
-### 3. **Displaying the Board**
-The `displayBoard` function prints the current state of the board in a user-friendly format.
+- **Constructor**: Initializes the board with empty spaces and sets the first player to 'X'.
+  
+- **displayBoard()**: Displays the current state of the board. The grid is formatted with clear lines separating the cells.
 
-```cpp
-void TicTacToe::displayBoard() {
-    cout << "\nCurrent Board:\n";
-    for (int i = 0; i < 3; ++i) {
-        cout << " " << board[i][0] << " | " << board[i][1] << " | " << board[i][2] << " \n";
-        if (i < 2) cout << "---+---+---\n";
-    }
-    cout << endl;
-}
-```
+- **checkWin()**: Checks all rows, columns, and diagonals to see if the current player has won the game. Returns `true` if a win condition is met.
 
-### 4. **Win Condition Check**
-The `checkWin` function checks rows, columns, and diagonals to determine if the current player has won.
+- **checkDraw()**: Checks if the board is full without any player winning, indicating a draw. Returns `true` if the game is a draw.
 
-```cpp
-bool TicTacToe::checkWin() {
-    for (int i = 0; i < 3; ++i) {
-        if (board[i][0] == currentPlayer && board[i][1] == currentPlayer && board[i][2] == currentPlayer)
-            return true;
-        if (board[0][i] == currentPlayer && board[1][i] == currentPlayer && board[2][i] == currentPlayer)
-            return true;
-    }
-    if (board[0][0] == currentPlayer && board[1][1] == currentPlayer && board[2][2] == currentPlayer)
-        return true;
-    if (board[0][2] == currentPlayer && board[1][1] == currentPlayer && board[2][0] == currentPlayer)
-        return true;
-    return false;
-}
-```
+- **switchPlayer()**: Switches the current player from 'X' to 'O' or vice versa after each turn.
 
-### 5. **Draw Condition Check**
-The `checkDraw` function checks if all cells are filled and there is no winner, indicating a draw.
+- **takeInput()**: Prompts the current player to choose a position on the board. It validates the input to ensure it is within the range (1-9) and that the selected cell is not already occupied.
 
-```cpp
-bool TicTacToe::checkDraw() {
-    for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j)
-            if (board[i][j] == ' ') return false;
-    return true;
-}
-```
+- **playGame()**: The main game loop. It handles the game flow, displaying the board, taking input, checking win/draw conditions, and switching players.
 
-### 6. **Player Input**
-The `takeInput` function prompts the current player to select a position on the board. It validates the input to ensure the chosen cell is empty.
+### Main Function
 
-```cpp
-bool TicTacToe::takeInput() {
-    int position;
-    cout << "Player " << currentPlayer << ", choose a position (1-9): ";
-    cin >> position;
-    position--;
-
-    int row = position / 3;
-    int col = position % 3;
-
-    if (position < 0 || position >= 9 || board[row][col] != ' ') {
-        cout << "Invalid move! Try again.\n";
-        return false;
-    }
-
-    board[row][col] = currentPlayer;
-    return true;
-}
-```
-
-### 7. **Switching Players**
-The `switchPlayer` function alternates the current player between 'X' and 'O'.
-
-```cpp
-void TicTacToe::switchPlayer() {
-    currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
-}
-```
-
-### 8. **Main Game Loop**
-The `playGame` function runs the main game loop, displaying the board, handling input, checking for win/draw conditions, and switching players.
-
-```cpp
-void TicTacToe::playGame() {
-    while (true) {
-        displayBoard();
-        if (!takeInput()) continue;
-
-        if (checkWin()) {
-            displayBoard();
-            cout << "Player " << currentPlayer << " wins!\n";
-            break;
-        }
-        if (checkDraw()) {
-            displayBoard();
-            cout << "It's a draw!\n";
-            break;
-        }
-
-        switchPlayer();
-    }
-}
-```
-
-### 9. **Main Function**
-The `main` function creates an instance of `TicTacToe` and starts the game.
-
-```cpp
-int main() {
-    TicTacToe game;
-    game.playGame();
-    return 0;
-}
-```
-
-## Game Logic
-- **Board Representation**: A 3x3 grid is represented using a 2D array.
-- **Win Conditions**: The game checks rows, columns, and diagonals to determine if a player has won.
-- **Draw Condition**: The game checks if all cells are filled without a winner.
-- **Player Switching**: Players alternate turns, starting with 'X'.
+The main function creates an instance of the `TicTacToe` class and starts the game by calling the `playGame()` method.
 
 ## Sample Output
-*(Manually add a snapshot here)*
 
+(Add a snapshot of the game output here)
+
+## About Me
+
+A passionate Computer Science student with an interest in software development, open-source projects, and learning new technologies.
+
+### Contact Me
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yourusername)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your-email@example.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yourprofile)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/yourphonenumber)
