@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <iomanip>
+#include <iomanip>     //Used for Input and Output Formatting
 using namespace std;
 
 // Class to represent a single course
@@ -14,8 +14,8 @@ public:
     Course(string name, int total, int obtained)
         : courseName(name), totalMarks(total), obtainedMarks(obtained) {}
 
-    // Getters
-    int getCredits() const { return totalMarks / 10; }
+    // Getters 
+    int getCredits() const { return totalMarks / 10; }           // Represents the weight or importance of the course based on total marks.
     double getGradePoints() const { return (obtainedMarks / (double)totalMarks) * getCredits() * 4.0; }
     string getCourseName() const { return courseName; }
     int getTotalMarks() const { return totalMarks; }
@@ -48,6 +48,14 @@ public:
         }
 
         return (totalCredits > 0) ? (totalGradePoints / totalCredits) : 0.0;
+        /*
+        This can also be written as 
+                if (totalCredits > 0) {
+                return totalGradePoints / totalCredits;  // Calculate GPA
+                } else {
+                return 0.0;  // No courses, so return GPA as 0.0
+                }
+        */
     }
 
     // Calculate new CGPA
